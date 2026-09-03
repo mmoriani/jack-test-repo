@@ -1,13 +1,13 @@
 """Backend HTTP app.
 
-Espone gli endpoint pubblici del servizio. Per ora solo l'health-check
-`GET /ping` (vedi contratto in `_shared/api/ping.md`).
+Espone una pagina HTML di test e l'health-check pubblico ``GET /ping``.
 """
 
 from datetime import datetime, timezone
 from pathlib import Path
 
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
 
 APP_ROOT = Path(__file__).resolve().parent
 
@@ -24,6 +24,12 @@ def _read_version() -> str:
 VERSION = _read_version()
 
 app = FastAPI(title="claude-test backend")
+
+
+@app.get("/", response_class=FileResponse)
+def home() -> FileResponse:
+    """Serve la pagina usata per provare il browser integrato."""
+    return FileResponse(APP_ROOT / "index.html")
 
 
 @app.get("/ping")

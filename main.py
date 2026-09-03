@@ -12,6 +12,7 @@ def primes_up_to(limit):
 
 
 def sum_primes(limit):
+    print("Test")
     return sum(primes_up_to(limit))
 
 

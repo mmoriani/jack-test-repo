@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browser test page</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+
+    header, main, footer {
+      width: min(900px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.5rem 0;
+    }
+
+    nav { display: flex; gap: 1rem; }
+
+    a { color: #7dd3fc; }
+
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      padding: 1.25rem;
+      border-radius: 12px;
+      background: #1e293b;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    h1, h2 { margin-top: 0; }
+    p { color: #cbd5e1; }
+
+    label {
+      display: block;
+      margin: 0.75rem 0 0.25rem;
+    }
+
+    input, select, textarea, button {
+      width: 100%;
+      padding: 0.65rem;
+      border: 1px solid #475569;
+      border-radius: 7px;
+      background: #0f172a;
+      color: inherit;
+    }
+
+    button {
+      margin-top: 1rem;
+      border: 0;
+      background: #0284c7;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    button:hover { background: #0369a1; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 0.6rem;
+      border-bottom: 1px solid #475569;
+      text-align: left;
+    }
+
+    footer {
+      padding: 2rem 0;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Browser Lab</strong>
+    <nav aria-label="Navigazione principale">
+      <a href="#elementi">Elementi</a>
+      <a href="#form">Form</a>
+      <a href="/ping">API ping</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card" id="elementi">
+      <h1>Pagina di test 👋</h1>
+      <p>Una pagina locale con alcuni elementi HTML per provare il browser integrato.</p>
+
+      <h2>Lista di controllo</h2>
+      <ul>
+        <li>Rendering e stili CSS</li>
+        <li>Link e ancore</li>
+        <li>Campi e pulsanti</li>
+      </ul>
+
+      <details>
+        <summary>Apri questo dettaglio</summary>
+        <p>Se riesci a leggere questo testo, il controllo interattivo funziona.</p>
+      </details>
+    </section>
+
+    <section class="card" id="form">
+      <h2>Form di esempio</h2>
+      <form action="/" method="get">
+        <label for="name">Nome</label>
+        <input id="name" name="name" placeholder="Mario Rossi" autocomplete="name">
+
+        <label for="role">Ruolo</label>
+        <select id="role" name="role">
+          <option>Developer</option>
+          <option>Designer</option>
+          <option>Tester</option>
+        </select>
+
+        <label for="notes">Note</label>
+        <textarea id="notes" name="notes" rows="3" placeholder="Scrivi qualcosa..."></textarea>
+
+        <button type="submit">Invia test</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Tabella</h2>
+      <table>
+        <thead>
+          <tr><th>Servizio</th><th>Stato</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Web server</td><td>Pronto</td></tr>
+          <tr><td>Endpoint /ping</td><td>Disponibile</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    Servizio locale di test · <a href="https://example.com">Link esterno di prova</a>
+  </footer>
+</body>
+</html>
