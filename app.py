@@ -26,12 +26,6 @@ VERSION = _read_version()
 app = FastAPI(title="claude-test backend")
 
 
-@app.get("/", response_class=FileResponse)
-def home() -> FileResponse:
-    """Serve la pagina usata per provare il browser integrato."""
-    return FileResponse(APP_ROOT / "index.html")
-
-
 @app.get("/ping")
 def ping() -> dict:
     """Health-check pubblico: nessuna auth, nessun accesso al DB.
@@ -48,6 +42,10 @@ def ping() -> dict:
         .replace("+00:00", "Z"),
     }
 
+@app.get("/", response_class=FileResponse)
+def home() -> FileResponse:
+    """Serve la pagina usata per provare il browser integrato."""
+    return FileResponse(APP_ROOT / "index.html")
 
 if __name__ == "__main__":
     import uvicorn
